@@ -15,6 +15,17 @@ class TodosController < ApplicationController
       render json: @todo
     end
   end
+  
+  def edit
+    @todo = Todo.find(params[:id])
+  end
+  
+  def update
+    @todo = Todo.find(params[:id])
+    if @todo.update(todo_params)
+      render json: @todo
+    end
+  end
 
   def destroy
     base_record = Todo.find(params[:id])
