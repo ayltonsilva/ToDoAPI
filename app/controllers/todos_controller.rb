@@ -17,8 +17,10 @@ class TodosController < ApplicationController
   end
 
   def destroy
-    Todo.find(params[:id]).destroy
-    render json: params[:id]
+    base_record = Todo.find(params[:id])
+    if base_record.destroy
+      render json: base_record
+    end
   end
 
   private
